@@ -1,0 +1,312 @@
+<template>
+
+<div style="display: flex; align-items: center; height: 100vh;min-height: 610px;" :key="conRender">
+
+
+
+<div class="funds-success-message-container">
+  <div class="funds-checkmark-text-container">
+    <div class="funds-checkmark-container">
+      <svg class="funds-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="funds-checkmark-circle" cx="26" cy="26" r="25" fill="none"/><path class="funds-checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+
+     <div class="funds-display-on-ie">
+       <svg class="funds-ie-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="funds-ie-checkmark-circle" cx="26" cy="26" r="25" fill="none"/><path class="funds-ie-checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+      </div>
+    </div>
+
+    <h1 v-if="passwordChanged" class="funds-success-done-text">E-mail envoyé</h1>
+
+    <h1 v-if="!passwordChanged" class="funds-success-done-text">Mot de passe modifié</h1>
+
+</div>
+
+  <div class="funds-success-message">
+
+<h2 v-if="!passwordChanged">Veuillez essayer à nouveau d'accéder à votre compte</h2>
+
+
+<h2 v-if="passwordChanged">Vous allez recevoir un e-mail pour créer un nouveau mot de passe</h2>
+   <p  v-if="passwordChanged " >Si vous ne recevez pas cet e-mail, veuillez vérifier votre spam</p>
+
+
+
+
+
+
+
+    <!-- <h2 v-if="emailResetPasswordStatus">Your password has been changed successfully </h2>
+   <p  v-if="emailResetPasswordStatus" >Now you will be able to connect to your account</p> -->
+    <router-link to="/se-connecter" >   <button style="margin: 50px 0px;" class="btn btn-dark px-4 py-1">Se connecter</button>
+</router-link>
+  </div>
+
+</div>
+
+
+
+</div>
+
+</template>
+
+
+
+
+<script >
+import axios from "axios";
+
+export default {
+
+    data(){
+        return {
+            conRender:0,
+            passwordChanged : false ,
+
+        }
+    },
+    mounted(){
+
+
+
+        this.conRender=0;
+
+
+         if(localStorage.getItem('passwordChangedSuccessMessage') == 'true'){
+        this.passwordChanged= true;}
+        else {
+            this.passwordChanged= false;
+        }
+
+    },
+    methods : {
+
+    }
+
+}
+</script>
+
+
+<style>
+
+.funds-success-message-container {
+  font-family: Roboto, "Segoe UI", "Helvetica Neue", sans-serif !important;
+  color: #333;
+  margin-top: 100px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.funds-checkmark-text-container {
+  display: block;
+  width: auto !important;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.funds-checkmark-container {
+  height: 40px;
+  padding: 0 4px 0 0px;
+  display: inline-block;
+  width: 70px;
+  margin: 0 auto;
+}
+
+.funds-checkmark-container:after {
+  clear: both;
+}
+
+.funds-success-done-text {
+  vertical-align: middle;
+  margin: 0;
+  display: inline;
+}
+
+.funds-success-message {
+  margin-top: 2em;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+
+.funds-success-message h2 {
+    color: black;
+    margin: 50px 0px;
+}
+
+h1,
+h2 {
+  font-weight: 700;
+  margin-top: 0px;
+}
+
+h1 {
+  font-size: 28pt;
+  margin-top: 45px;
+}
+
+h2 {
+  font-size: 18pt;
+  margin-top: 25px;
+}
+
+p {
+  font-size: 12pt;
+  padding-bottom: 1em;
+  line-height: 27.2px;
+}
+
+/* CHECKMARK */
+.funds-checkmark-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 5;
+  stroke-miterlimit: 10;
+  stroke: #33bb11;
+  fill: none;
+  -webkit-animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.funds-checkmark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 5;
+  stroke: #ffffff;
+  stroke-miterlimit: 10;
+  margin: 10% auto;
+  -webkit-box-shadow: inset 0px 0px 0px #33bb11;
+  box-shadow: inset 0px 0px 0px #33bb11;
+  -webkit-animation: fill 0.4s ease-in-out 0.4s forwards,
+    scale 0.3s ease-in-out 0.9s both;
+  animation: fill 0.4s ease-in-out 0.4s forwards,
+    scale 0.3s ease-in-out 0.9s both;
+}
+
+.funds-checkmark-check {
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  -webkit-animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+.funds-display-on-ie {
+  display: none;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .funds-display-on-ie {
+    display: block;
+  }
+
+  .funds-checkmark {
+    display: none;
+  }
+
+  .funds-ie-checkmark-circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 5;
+    stroke-miterlimit: 10;
+    stroke: #33bb11;
+    fill: none;
+    -webkit-animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  }
+
+  .funds-ie-checkmark {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 5;
+    stroke: #ffffff;
+    stroke-miterlimit: 10;
+    margin: 10% auto;
+    -webkit-box-shadow: inset 0px 0px 0px #33bb11;
+    box-shadow: inset 0px 0px 0px #33bb11;
+    -webkit-animation: fill 0.4s ease-in-out 0.4s forwards,
+      scale 0.3s ease-in-out 0.9s both;
+    animation: fill 0.4s ease-in-out 0.4s forwards,
+      scale 0.3s ease-in-out 0.9s both;
+  }
+
+  .funds-ie-checkmark-check {
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+  }
+}
+
+@-webkit-keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes scale {
+  0%,
+  100% {
+    -webkit-transform: none;
+    transform: none;
+  }
+  50% {
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes scale {
+  0%,
+  100% {
+    -webkit-transform: none;
+    transform: none;
+  }
+  50% {
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@-webkit-keyframes fill {
+  100% {
+    -webkit-box-shadow: inset 0px 0px 0px 30px #33bb11;
+    box-shadow: inset 0px 0px 0px 30px #33bb11;
+  }
+}
+
+@keyframes fill {
+  100% {
+    -webkit-box-shadow: inset 0px 0px 0px 30px #33bb11;
+    box-shadow: inset 0px 0px 0px 30px #33bb11;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .funds-checkmark-text-container {
+    display: block;
+  }
+  .funds-checkmark-container {
+    height: auto;
+    padding: 0;
+    display: block;
+    width: 100%;
+  }
+}
+
+
+</style>

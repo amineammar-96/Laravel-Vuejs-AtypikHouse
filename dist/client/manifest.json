@@ -1,0 +1,75 @@
+{
+  "public/images/atypikHouseLogo.png": {
+    "file": "assets/atypikHouseLogo.bdc218d6.png",
+    "src": "public/images/atypikHouseLogo.png"
+  },
+  "public/images/cabane.webp": {
+    "file": "assets/cabane.a2d0fc6b.webp",
+    "src": "public/images/cabane.webp"
+  },
+  "public/images/yourte.jpg": {
+    "file": "assets/yourte.07b6aaef.jpg",
+    "src": "public/images/yourte.jpg"
+  },
+  "public/images/bulle.jpg": {
+    "file": "assets/bulle.6d56fada.jpg",
+    "src": "public/images/bulle.jpg"
+  },
+  "public/images/noNotification.svg": {
+    "file": "assets/noNotification.afe21254.svg",
+    "src": "public/images/noNotification.svg"
+  },
+  "public/images/avatar.png": {
+    "file": "assets/avatar.e57e8e09.png",
+    "src": "public/images/avatar.png"
+  },
+  "public/images/avatar.svg": {
+    "file": "assets/avatar.a6aff615.svg",
+    "src": "public/images/avatar.svg"
+  },
+  "public/images/homeAnnonceRandom.svg": {
+    "file": "assets/homeAnnonceRandom.39cc47d2.svg",
+    "src": "public/images/homeAnnonceRandom.svg"
+  },
+  "node_modules/vite-plugin-ssr/dist/esm/client/router/entry.js": {
+    "file": "assets/entry-client-routing.87f2b90b.js",
+    "src": "node_modules/vite-plugin-ssr/dist/esm/client/router/entry.js",
+    "isEntry": true,
+    "imports": [
+      "_chunk-e1bd6396.js"
+    ]
+  },
+  "node_modules/vite-plugin-ssr/dist/esm/client/entry.js": {
+    "file": "assets/entry-server-routing.4d163252.js",
+    "src": "node_modules/vite-plugin-ssr/dist/esm/client/entry.js",
+    "isEntry": true,
+    "imports": [
+      "_chunk-e1bd6396.js"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/resources/js/app.js.74aea043.js",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "css": [
+      "assets/app.23132102.css"
+    ],
+    "assets": [
+      "assets/atypikHouseLogo.bdc218d6.png",
+      "assets/cabane.a2d0fc6b.webp",
+      "assets/yourte.07b6aaef.jpg",
+      "assets/bulle.6d56fada.jpg",
+      "assets/avatar.e57e8e09.png",
+      "assets/noNotification.afe21254.svg",
+      "assets/avatar.a6aff615.svg",
+      "assets/homeAnnonceRandom.39cc47d2.svg"
+    ]
+  },
+  "_chunk-e1bd6396.js": {
+    "file": "assets/chunk-e1bd6396.js"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app.23132102.css",
+    "src": "resources/js/app.css"
+  }
+}
