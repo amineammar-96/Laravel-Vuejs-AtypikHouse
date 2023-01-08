@@ -54,7 +54,7 @@
 <p class="sm-text-xs" style="margin: 0; color: #a0aec0; font-size: 14px;">Votre réservation est mainetenant confirmée</p>
 </td>
 <td class="logoInvoiceImg" style="text-align: right;" width="20%" align="right">
-<img class="logoInvoiceImg" src="../../../../../../images/AtypikHouseLogo.png" >
+<img class="logoInvoiceImg" src="../../../../../public/images/AtypikHouseLogo.png" >
 
 </td>
 </tr>

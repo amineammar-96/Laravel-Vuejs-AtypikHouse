@@ -19,11 +19,23 @@ class reservationController extends Controller
 
     public function getAllReservation()
     {
-        $reservations = Reservation::with('annonce')->get();
+        $reservations = Reservation::with('annonce')->with('user')->get();
         $reservationStats=[];
 
         for ($i=0; $i < count($reservations) ; $i++) {
             $images = Images::where('annonce_id' , $reservations[$i]->annonce_id)->get();
+            $clientInfo = userInfo::where('user_id' , $reservations[$i]->user_id)->get();
+
+            $annonce = Annonce::where('id' , $reservations[$i]->annonce_id)->get();
+            $owner = User::where('id' , $annonce[0]->user_id)->get();
+            $ownerInfo = userInfo::where('user_id' , $annonce[0]->user_id)->get();
+
+            $reservations[$i]->ownerInfo=$ownerInfo[0];
+            $reservations[$i]->owner=$owner[0];
+
+
+            $reservations[$i]->clientInfo=$clientInfo[0];
+
             $reservations[$i]->images=$images;
 
 
@@ -168,7 +180,7 @@ class reservationController extends Controller
 
         foreach ($adminArray as $key => $admin) {
             $notification = Notification::create([
-                'content' => "Une nouvelle réservation vient d'étre passer",
+                'content' => "Une nouvelle réservation vient d'étre passer (Ref:#ATKRES0000".$reservation->id.")",
                 'from_id' => $request->user_id,
                 'user_id' => $admin->id,
                 'link' => "/dashboardAdmin",
@@ -183,7 +195,7 @@ class reservationController extends Controller
 
 
         $notification = Notification::create([
-            'content' => "Votre réservation à été confirmée",
+            'content' => "Votre réservation à été confirmée (Ref:#ATKRES0000".$reservation->id.")",
             'from_id' => $request->user_id,
             'user_id' => $request->user_id,
             'link' => "/dashboardClient",
@@ -194,7 +206,7 @@ class reservationController extends Controller
         ]);
 
         $notification = Notification::create([
-            'content' => "Vient de réserver un de vos logements proposés",
+            'content' => "Vient de réserver un de vos logements proposés (Ref:#ATKRES0000".$reservation->id.")",
             'from_id' => $request->user_id,
             'user_id' => $ownerInfo[0]->id,
             'link' => "/dashboardOwner",
@@ -229,7 +241,7 @@ class reservationController extends Controller
 
         foreach ($adminArray as $key => $admin) {
             $notification = Notification::create([
-                'content' => "Une réservation à été annulé (Ref:".$request->reservation_id.")" ,
+                'content' => "Une réservation à été annulé (Ref: #ATKRES0000".$request->reservation_id.")" ,
                 'from_id' => $reservationAux[0]->user_id,
                 'user_id' => $admin->id,
                 'link' => "/dashboardAdmin",
@@ -244,7 +256,7 @@ class reservationController extends Controller
 
 
         $notification = Notification::create([
-            'content' => "Votre réservation à été annuler (Ref:".$request->reservation_id.")" ,
+            'content' => "Votre réservation à été annuler (Ref: #ATKRES0000".$request->reservation_id.")" ,
             'from_id' => $reservationAux[0]->user_id,
             'user_id' => $reservationAux[0]->user_id,
             'link' => "/dashboardClient",
@@ -259,7 +271,7 @@ class reservationController extends Controller
 
 
         $notification = Notification::create([
-            'content' => "Vient d'annuler une réservation (Ref:".$request->reservation_id.")" ,
+            'content' => "Vient d'annuler une réservation (Ref: #ATKRES0000".$request->reservation_id.")" ,
             'from_id' => $reservationAux[0]->user_id,
             'user_id' => $owner[0]->id,
             'link' => "/dashboardOwner",

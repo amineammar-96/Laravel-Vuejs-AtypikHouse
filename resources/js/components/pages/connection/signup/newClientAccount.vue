@@ -75,7 +75,6 @@ flex-direction: column;
 flex-direction: column;
 }
 h1{
-    font-family: 'Kaushan Script', cursive;
   font-size:4em;
   letter-spacing:3px;
   color:#272727 ;

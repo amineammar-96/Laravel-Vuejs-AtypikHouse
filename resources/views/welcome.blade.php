@@ -15,7 +15,9 @@
 
 </head>
 <body>
-	<div id="app"></div>
+	<div id="app">
+        
+    </div>
 	@vite('resources/js/app.js')
 
     {{-- <script type="module" src="/resources/js/client-side.js"></script> --}}

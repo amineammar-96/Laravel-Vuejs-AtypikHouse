@@ -10,6 +10,7 @@ use App\Models\Like;
 use App\Models\Indisponibility;
 use App\Models\Reservation;
 
+
 use App\Models\TypeLogement;
 
 class Annonce extends Model

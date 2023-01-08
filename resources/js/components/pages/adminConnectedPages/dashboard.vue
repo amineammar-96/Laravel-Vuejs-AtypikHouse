@@ -1658,7 +1658,7 @@
                     :style="sortedReservations.length==1 ? 'width:100%;' : '' "
                     v-for="(reservation, key) in sortedReservations"
                     :key="key"
-                    class="col-xl-6 col-md-6 col-sm-12"
+                    class="col-xl-4 col-md-6 col-sm-12"
                   >
                     <div class="historiquesStepCard">
                       <div v-if="reservation.images" class="box-1">
@@ -1729,7 +1729,7 @@
 
                         <h3>
                           {{ reservation.annonce.title }} <br />
-                          #ATK0003429
+                          #ATKRES0000{{ reservation.id }}
                         </h3>
                         <p>
                           Date d'arrivé : {{ reverseDate(reservation.checkIn) }}
@@ -1744,13 +1744,45 @@
                         <p>Nombre de nuits : {{ reservation.nightCount }}</p>
 
                         <br />
-                        <p>Payée : € {{ reservation.amount }}</p>
+                        <p>Total : € {{ reservation.amount }}</p>
                         <br />
                         <p>Date de réservation :{{ reservation.created_at }}</p>
                         <br />
-                        <p>{{ reservation.annonce.city }}</p>
+                        <p>Location: {{ reservation.annonce.city }}</p>
 
-                        <br />
+<br />
+<br />
+                        <p>Détails client:</p>
+<br />
+                        <p>{{ reservation.user.lastname }} {{ reservation.user.firstname }}</p>
+
+<br />
+                        <p>{{ reservation.user.email }}</p>
+
+<br />
+                        <p>{{ reservation.clientInfo.phone }} </p>
+
+
+<br />
+                        <p>Code client: #ATKCLIENT0000{{ reservation.user.id }}</p>
+
+
+
+<br />
+<br />
+                        <p>Détails propriétaire:</p>
+<br />
+                        <p>{{ reservation.owner.lastname }} {{ reservation.owner.firstname }}</p>
+
+<br />
+                        <p>{{ reservation.owner.email }}</p>
+
+<br />
+                        <p>{{ reservation.ownerInfo.phone }} </p>
+
+
+<br />
+                        <p>Code propriétaire: #ATKHOTE0000{{ reservation.owner.id }}</p>
                         <div class="shop"></div>
                         <div
                           v-if="reservation.bookState == 'Annulée'"
@@ -3631,7 +3663,15 @@ reservationSearchTextValue:'',
             this.adminsErrors.password = "";
             this.adminsErrors.lastname = "";
           } else if (response.data.status == "true") {
-            Swal.fire("Bon travail!", "Administrateur crée", "success");
+               Swal.fire({
+            actions: "success",
+            icon: "success",
+            title: "Administrateur crée",
+            confirmButtonColor: "#272a2c",
+            confirmButtonText:"Fermer",
+            confirmButtonClass: " px-4 py-2 rounded-pill ",
+            customClass: { popup: "swal2-border-radius" },
+          });
 
             this.admin = {
               lastname: "",
@@ -3705,7 +3745,16 @@ reservationSearchTextValue:'',
             this.moderateurErrors.password = "";
             this.moderateurErrors.lastname = "";
           } else if (response.data.status == "true") {
-            Swal.fire("Bon travail!", "Modérateur crée", "success");
+
+              Swal.fire({
+            actions: "success",
+            icon: "success",
+            title: "Modérateur crée",
+            confirmButtonColor: "#272a2c",
+            confirmButtonText:"Fermer",
+            confirmButtonClass: " px-4 py-2 rounded-pill ",
+            customClass: { popup: "swal2-border-radius" },
+          });
 
             this.moderateur = {
               lastname: "",
@@ -3824,7 +3873,7 @@ reservationSearchTextValue:'',
       });
     },
 
-    getAdminIdToDelete(x) {
+    getAdminIdToDelete(id) {
       Swal.fire({
         title: "Êtes-vous sûr de vouloir supprimer ce compte d'administrateur?",
 
@@ -3855,7 +3904,7 @@ reservationSearchTextValue:'',
       });
     },
 
-    getModerateurIdToDelete(x) {
+    getModerateurIdToDelete(id) {
       Swal.fire({
         title: "Êtes-vous sûr de vouloir supprimer ce compte de modérateur?",
 

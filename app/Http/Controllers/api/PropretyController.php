@@ -8,6 +8,7 @@ use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Proprety;
+use App\Models\TypeLogement;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 
@@ -50,10 +51,11 @@ class PropretyController extends Controller
 
             foreach ($request->typesLogementIds as $key => $typesLogementId) {
                 $annonces = Annonce::where('type_logement_id', $typesLogementId)->get();
+                $typeLogement = TypeLogement::where('id', $typesLogementId)->get();
 
                 foreach ($annonces as $key => $annonce) {
                     $notificationDeleteProprety = Notification::create([
-                        'content' => " l'administration à ajouté une propriété dynamique dans votre annonce  (".$propretie->name.")",
+                        'content' => " l'administration à ajouté une propriété dynamique (".$propretie->name.") pour le type ".$typeLogement[0]."qui correspond a votre annonce (Ref: #ATKHEB0000".$annonce->id.")",
                         'from_id' => $request->user_id,
                         'user_id' => $annonce->user_id,
                         'type' => "update-modal",
@@ -117,7 +119,7 @@ class PropretyController extends Controller
 
 
             $notificationDeleteProprety = Notification::create([
-                'content' => " L'administration à supprimé une propriété dynamique dans votre annonce  (".$proprety[0]->name.")",
+                'content' => " L'administration à supprimé une propriété dynamique (".$proprety[0]->name.") dans votre annonce (Ref: #ATKHRB0000".$annonce->id.") ",
                 'from_id' => $request->user_id,
                 'user_id' => $annonce->user_id,
                 'type' => "Delete",

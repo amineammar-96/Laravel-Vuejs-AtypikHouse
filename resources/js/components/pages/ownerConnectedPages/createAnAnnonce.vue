@@ -1031,6 +1031,7 @@ export default {
         .post("api/addAnnonce", this.annonce, config)
         .then((response) => {
           console.log("response annonce id : ", response.data.annonce.id);
+          localStorage.setItem('notificationAnnonceId' , response.data.annonce.id)
           console.log("response USER id : ",this.annonce.user_id);
 
           this.annonce.annonce_id=response.data.annonce.id;
@@ -1234,6 +1235,9 @@ export default {
 
 
 
+let     aux=      localStorage.getItem('notificationAnnonceId');
+
+
 
     setTimeout(() =>{
 
@@ -1242,7 +1246,7 @@ if(this.adminsAndModerateurUsers.length>0){
 
         this.adminsAndModerateurUsers.forEach(element => {
         this.notification.user_id=element.id
-        this.notification.content="A ajouté une nouvelle annonce"
+        this.notification.content="A ajouté une nouvelle annonce (Ref: #ATKHEB0000"+aux+")"
         this.notification.type="add"
          axios
         .post("api/sendNotification", this.notification, config);

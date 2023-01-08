@@ -5,9 +5,13 @@ import {createApp} from 'vue'
 import App from './App.vue'
 let app=createApp(App);
 
+import VueSweetalert2 from 'vue-sweetalert2';
 
+// Do not import this file if you want to use custom style
+import 'sweetalert2/dist/sweetalert2.min.css';
 
-import vue3StarRatings from "vue3-star-ratings";
+app.use(VueSweetalert2);
+
 
 import router from './routes'
 app.use(router);

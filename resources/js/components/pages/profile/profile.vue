@@ -36,7 +36,7 @@
                 <figure class="personal-figure">
                   <img
                     v-if="userAvatar == ''"
-                    src="/images/avatar.png"
+                    src="../../../../../public/images/avatar.png"
                     class="personal-avatar"
                     alt="avatar"
                   />

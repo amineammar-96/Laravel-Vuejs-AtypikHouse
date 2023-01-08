@@ -694,7 +694,7 @@ height: 97vh;"                        v-else
                             <img v-if="notification.avatar" class="avatarNotification" :src="'/storage/'+notification.avatar.path+'/'+notification.avatar.name"
                                   :alt="notification.id+'-'+notification.created_at">
 
-                            <img v-else class="avatarNotification"  src="../../../../../../images/avatar.png"  :alt="notification.id+'-'+notification.created_at" srcset="">
+                            <img v-else class="avatarNotification"  src="../../../../../public/images/avatar.png"  :alt="notification.id+'-'+notification.created_at" srcset="">
 
                             <div>
                         <b>{{ notification.from_users[0].lastname }} {{ notification.from_users[0].firstname }}</b><br> {{ notification.content }}<br> <span>{{ notification.created_at }}</span>
@@ -895,7 +895,7 @@ height: 97vh;"                        v-else
 </router-link>
 
  <router-link
-                      
+
                       style="text-decoration: none"
                       :to="'/disponibilityAnnonce/?annonce_id='+userAnnonce.id"
                       class="text-secondary"

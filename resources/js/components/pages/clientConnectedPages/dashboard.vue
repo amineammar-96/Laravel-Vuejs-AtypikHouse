@@ -149,7 +149,7 @@
                     :style="lastThreeReservations.length==1 ? 'width:100%;' : '' "
                     v-for="(reservation, key) in lastThreeReservations"
                     :key="key"
-                    class="col-xl-6 col-md-6 col-sm-12"
+                    class="col-xl-4 col-md-6 col-sm-12"
                   >
                     <div class="historiquesStepCard">
                       <div v-if="reservation.images" class="box-1">
@@ -256,52 +256,7 @@
                           Le {{ reservation.updated_at }}
                         </div>
 
-                      <!-- <div
-                          style="text-align: end"
-                          v-if="reservation.bookState == 'Annulée'"
-                        >
-                          <i
-                            style="
-                              color: lightgrey;
-                              font-size: 20px;
-                              cursor: pointer;
-                            "
-                            class="fas fa-trash"
-                            @click="deleteReservation(reservation.id)"
-                          ></i>
-                        </div>
 
-                        <div
-                          v-if="
-                                reservation.reservationState != 'Annulée' && reservation.reservationState != 'Prochainement'
-                          "
-                          class="card-foot"
-                        >
-                          <button
-                            @click="cancelReservation(reservation.id)"
-                            class="btn btn-danger"
-                          >
-                            Annuler
-                          </button>
-                        </div>
-
-                        <div
-                          v-if="
-                            reservation.reservationState != 'Annulée' &&
-                            (reservation.reservationState == 'En cours' ||
-                              reservation.reservationState == 'Passée')
-                          "
-                          class="card-foot"
-                        >
-                          <button
-                            @click="choseWhichAnnonce(reservation.annonce.id)"
-                            data-bs-toggle="modal"
-                            data-bs-target="#commentReservationModal"
-                            class="btn btnCommenter"
-                          >
-                            Commenter
-                          </button>
-                        </div> -->
                       </div>
                     </div>
                   </div>
@@ -1165,6 +1120,7 @@
 
               <div class="historiquesStepContainer">
                 <div class="row">
+                    <h1>Historiques</h1>
                   <div
                     style="
                       margin-bottom: 50px;
@@ -1174,7 +1130,7 @@
                     :style="sortedReservations.length==1 ? 'width:100%;' : '' "
                     v-for="(reservation, key) in sortedReservations"
                     :key="key"
-                    class="col-xl-6 col-md-6 col-sm-12"
+                    class="col-xl-4 col-md-6 col-sm-12"
                   >
                     <div class="historiquesStepCard">
                       <div v-if="reservation.images" class="box-1">
@@ -1264,7 +1220,10 @@
                         <br />
                         <p>Date de réservation :{{ reservation.created_at }}</p>
                         <br />
-                        <p>{{ reservation.annonce.city }}</p>
+                        <p>Ref réservation :#ATKRES0000{{ reservation.id }}</p>
+                        <br />
+                        <br />
+                        <p><i  class="fas fa-map-marker-alt mr-3"></i><span class="mx-2">{{ reservation.annonce.city }}</span></p>
 
                         <br />
                         <div class="shop"></div>
@@ -1457,6 +1416,7 @@ import moment from "moment";
 import loadingPage from "../loadingPage/loadingPage.vue";
 // import { defineComponent } from "vue";
 // import vue3starRatings from "vue3-star-ratings";
+
 
 import StarRating from "vue-star-rating";
 
@@ -3158,7 +3118,6 @@ p {
     padding: 20px 30px
     border-radius: 5px
 
- .comments-form
  ul
      list-style: none
      li

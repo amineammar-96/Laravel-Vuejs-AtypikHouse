@@ -1122,7 +1122,6 @@ p {
   font-weight: 600;
   text-align: center;
   font-size: 4vw;
-  font-family: "Kaushan Script", cursive;
 }
 
 /* Section Four */
@@ -1136,7 +1135,6 @@ p {
 
 .section-four p {
   margin-bottom: 2rem;
-  font-family: "Kaushan Script", cursive;
 }
 
 .section-four {
@@ -1151,14 +1149,12 @@ p {
 
 .section-five p {
   margin-bottom: 2rem;
-  font-family: "Kaushan Script", cursive;
 }
 
 /* Section Six */
 
 .section-six p {
   margin-bottom: 2rem;
-  font-family: "Kaushan Script", cursive;
 }
 
 /* Flex Group Mobile */
@@ -1178,7 +1174,6 @@ p {
   font-size: 2.5rem;
   font-weight: 600;
   text-align: center;
-  font-family: "Kaushan Script", cursive;
 }
 
 .section-seven-btn {
@@ -1249,7 +1244,6 @@ p {
   font-size: 2.5rem;
   font-weight: 600;
   text-align: center;
-  font-family: "Kaushan Script", cursive;
 }
 
 .section-ten-btn {
@@ -1268,11 +1262,7 @@ p {
 </style>
 
 <style lang="scss">
-.body {
-  h3 {
-    font-family: "Kaushan Script", cursive;
-  }
-}
+
 
 @media screen and (max-width: 990px) {
   .containerCards .box .top img {

@@ -54,7 +54,7 @@
             >
               <Slide v-for="(image, key) in srcImagesArray" :key="key">
                 <div class="carousel__item">
-                  <img alt='imageParDéfault' class="bigOneImage" :src="image" />
+                  <img alt='imageParDéfault' class="bigOneImage" :src="'www.f2i-dev9-aa-mk-ah-cd.fr/api/getAnnonceCoverImage/?annonce_id='+2" />
                 </div>
               </Slide>
             </Carousel>
@@ -826,7 +826,7 @@
                     />
                   </div>
                   <div v-else>
-                    <img alt="progileImage" src="images/avatar.png"  class="img-fluid" />
+                    <img alt="progileImage" src="../../../../../public/images/avatar.png"  class="img-fluid" />
                   </div>
                 </div>
 
@@ -1462,7 +1462,6 @@ tis.confirmReservation();
     datePickerChanged() {
       if (this.date != undefined) {
         this.addReservation();
-        console.log("hahagagagaggag");
       }
     },
 
@@ -1850,10 +1849,10 @@ tis.confirmReservation();
       };
 
       if (likeOrDislike == "dislike") {
-        notification.content = "A supprimé votre annonce de son favovis";
+        notification.content = "A supprimé votre annonce de son favovis (Ref: #ATKHEB0000"+this.annonce[0].id+")";
         notification.type = "dislike";
       } else {
-        notification.content = "A aimé votre  annonce";
+        notification.content = "A aimé votre  annonce (Ref: #ATKHEB0000"+this.annonce[0].id+")";
         notification.type = "like";
       }
 

@@ -33,7 +33,7 @@ return new class extends Migration
             $table->text('informationsSupp');
             $table->json('suppPropretiesAnnonce');
 
-            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });

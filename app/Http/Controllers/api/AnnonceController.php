@@ -25,6 +25,24 @@ class AnnonceController extends Controller
         ]);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     public function deleteAnnonce($id){
 
 

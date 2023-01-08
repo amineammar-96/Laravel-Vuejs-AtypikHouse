@@ -39,10 +39,22 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Route::group(['middleware' => 'auth:api'] , function(){
+
+//     Route::post("/getUser" , [UserController::class , "index"]);
+
+// });
+Route::post("login" , [UserController::class , "login"]);
+
+Route::middleware('auth:api')->group( function () {
+
+    Route::post("/getUser" , [UserController::class , "index"]);
+
+});
+
 
 Route::post('/signupClient' , [UserController::class , "signupClient"]);
-Route::post("/login" , [UserController::class , "login"]);
-Route::post("/getUser" , [UserController::class , "index"]);
+// Route::post("/getUser" , [UserController::class , "index"])->middleware('auth:api');
 
 Route::post("/getUserByRole" , [UserController::class , "getUserByRole"])
 ->withoutMiddleware('throttle:api')

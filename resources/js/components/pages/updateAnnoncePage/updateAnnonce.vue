@@ -1493,7 +1493,7 @@ showDenyButton=false;
              let notification = {
         from_id: localStorage.getItem("userId"),
       };
-             notification.content = "L'administration à modifié votre annonce";
+             notification.content = "L'administration à modifié votre annonce (Ref:#ATKHEB0000"+this.annonce.user_id+")";
              notification.type = "update";
       notification.user_id = this.annonce.user_id;
  notification.link = "/annonce/?id=" + this.annonce.id;
@@ -1709,9 +1709,9 @@ if(this.user.id==this.annonce.user_id){
 
         this.notification.user_id= this.annonce.user_id;
         this.notification.from_id= this.user.id
-        this.notification.content="A modifié son annonce"
+        this.notification.content="A modifié son annonce (Ref: #ATKHEB0000"+this.$route.query.annonce_id+")";
         this.notification.type="update";
-        this.link='/annonce/?id='+this.$route.query.annonce_id
+        this.link='/annonce/?id='+this.$route.query.annonce_id;
 
 
 
@@ -1723,7 +1723,7 @@ if(this.user.id==this.annonce.user_id){
         users.forEach(element => {
         this.notification.from_id= this.user.id
         this.notification.user_id=element.id
-        this.notification.content="A modifié son annonce"
+        this.notification.content="A modifié son annonce (Ref: #ATKHEB0000"+this.$route.query.annonce_id+')';
         this.notification.type="update"
         this.notification.link='/annonce/?id='+this.$route.query.annonce_id
 

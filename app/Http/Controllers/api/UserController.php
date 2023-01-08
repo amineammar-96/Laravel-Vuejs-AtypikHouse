@@ -195,11 +195,11 @@ public function signupClient(Request $request)
             ], 422);
         } else {
 
-            if (Auth::attempt($validatedData)) {
+            if (auth()->attempt($validatedData)) {
 
-              
 
-                $token = Auth::user()->createToken('auth')->accessToken;
+
+                $token = auth()->user()->createToken('auth:api')->accessToken;
                 // dd($token->token);
                 $user = User::where('email', $request->input('email'))->get();
                 return response()->json([
